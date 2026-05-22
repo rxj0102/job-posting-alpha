@@ -1,0 +1,16 @@
+ticker,company_name,careers_page_url,sector,avg_headcount
+AMZN,Amazon,https://www.amazon.jobs/en/,Technology,1540000
+MSFT,Microsoft,https://careers.microsoft.com/us/en,Technology,221000
+GOOGL,Alphabet,https://careers.google.com/jobs/results/,Technology,182000
+META,Meta Platforms,https://www.metacareers.com/jobs,Technology,86000
+NVDA,NVIDIA,https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite,Technology,29600
+JNJ,Johnson & Johnson,https://jobs.jnj.com,Healthcare,152700
+UNH,UnitedHealth Group,https://careers.unitedhealthgroup.com,Healthcare,440000
+PFE,Pfizer,https://www.pfizer.com/about/careers/search,Healthcare,83000
+HON,Honeywell,https://careers.honeywell.com/us/en,Industrials,98000
+GE,GE Aerospace,https://jobs.gecareers.com/aviation/global/en,Industrials,171000
+CAT,Caterpillar,https://careers.caterpillar.com/en,Industrials,109600
+JPM,JPMorgan Chase,https://careers.jpmorgan.com/us/en/home,Financials,308700
+BAC,Bank of America,https://careers.bankofamerica.com,Financials,213000
+AMGN,Amgen,https://careers.amgen.com,Consumer,24400
+HD,Home Depot,https://careers.homedepot.com,Consumer,465000
