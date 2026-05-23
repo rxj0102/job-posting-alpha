@@ -73,3 +73,7 @@ htmlcov/
 dmypy.json
 
 # NOTE: data/reference/ CSVs ARE tracked — they are hand-curated inputs
+
+# Override: track synthetic-demo outputs so portfolio viewers can see results
+# without running the pipeline themselves.
+!outputs/sample_outputs/

@@ -269,24 +269,26 @@ def compute_hiring_acceleration_zscore(
 
     The rolling window is computed *per ticker* over sorted ``year_month`` values.
     """
-    df = df.copy().sort_values(["ticker", "year_month"])
+    df = df.copy().sort_values(["ticker", "year_month"]).reset_index(drop=True)
 
     min_periods = config.ZSCORE_MIN_PERIODS
 
-    def _zscore_group(grp: pd.DataFrame) -> pd.DataFrame:
-        series = grp["normalized_net_new"]
-        roll = series.rolling(window=window, min_periods=min_periods)
-        grp = grp.copy()
-        grp["rolling_mean"] = roll.mean()
-        grp["rolling_std"] = roll.std()
-        grp["hiring_accel_zscore"] = np.where(
-            grp["rolling_std"].notna() & (grp["rolling_std"] > 0),
-            (series - grp["rolling_mean"]) / grp["rolling_std"],
-            np.nan,
-        )
-        return grp
-
-    df = df.groupby("ticker", group_keys=False).apply(_zscore_group)
+    # Use transform so that 'ticker' always stays as a regular column.
+    # groupby().apply() moves the group key into the index on pandas ≥ 2.2
+    # when the returned sub-DataFrame contains that column, which breaks
+    # downstream sig_row["ticker"] lookups.
+    grp = df.groupby("ticker")["normalized_net_new"]
+    df["rolling_mean"] = grp.transform(
+        lambda s: s.rolling(window=window, min_periods=min_periods).mean()
+    )
+    df["rolling_std"] = grp.transform(
+        lambda s: s.rolling(window=window, min_periods=min_periods).std()
+    )
+    df["hiring_accel_zscore"] = np.where(
+        df["rolling_std"].notna() & (df["rolling_std"] > 0),
+        (df["normalized_net_new"] - df["rolling_mean"]) / df["rolling_std"],
+        np.nan,
+    )
     df["high_acceleration"] = (
         df["hiring_accel_zscore"] > config.HIRING_ACCEL_ZSCORE_THRESHOLD
     )

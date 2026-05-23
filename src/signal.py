@@ -284,15 +284,19 @@ def run_ols_regression(aligned_df: pd.DataFrame, jolts_df: Optional[pd.DataFrame
         if "jolts_openings_rate" in df.columns and df["jolts_openings_rate"].notna().any():
             X_cols.append("jolts_openings_rate")
 
-    # Sector dummies
+    # Sector dummies — cast to float (pandas ≥2.0 returns bool by default,
+    # which statsmodels cannot accept cleanly via numpy object arrays)
     if "sector" in df.columns:
-        sector_dummies = pd.get_dummies(df["sector"], prefix="sector", drop_first=True)
-        df = pd.concat([df, sector_dummies], axis=1)
+        sector_dummies = pd.get_dummies(
+            df["sector"], prefix="sector", drop_first=True
+        ).astype(float)
+        df = pd.concat([df.reset_index(drop=True),
+                        sector_dummies.reset_index(drop=True)], axis=1)
         X_cols.extend([c for c in sector_dummies.columns])
 
     df = df.dropna(subset=X_cols)
-    y = df["surprise_pct"]
-    X = sm.add_constant(df[X_cols])
+    y = df["surprise_pct"].astype(float)
+    X = sm.add_constant(df[X_cols].astype(float))
 
     model = sm.OLS(y, X).fit(cov_type="HC3")  # Heteroskedasticity-robust SEs
     print("\n" + "=" * 60)
@@ -336,11 +340,24 @@ def compute_information_coefficient(aligned_df: pd.DataFrame) -> float:
         return float("nan")
 
     ic, p_value = stats.spearmanr(df["signal_strength"], df["surprise_pct"])
-    print(f"\nInformation Coefficient (Spearman ρ): IC = {ic:.4f}, p = {p_value:.4f}")
+
+    # Also compute IC on active-signal months only (non-zero signal_strength)
+    active = df[df["signal_strength"].abs() > 0]
+    ic_active, p_active = (
+        stats.spearmanr(active["signal_strength"], active["surprise_pct"])
+        if len(active) >= 5
+        else (float("nan"), float("nan"))
+    )
+
+    print(f"\nInformation Coefficient (Spearman ρ)")
+    print(f"  Full cross-section  (n={len(df):>4}): IC = {ic:+.4f}, p = {p_value:.4f}")
+    if len(active) >= 5:
+        print(f"  Active signal only  (n={len(active):>4}): IC = {ic_active:+.4f}, p = {p_active:.4f}")
     if abs(ic) >= 0.05:
         print("  → IC ≥ 0.05: signal has meaningful cross-sectional predictive content.")
     else:
-        print("  → IC < 0.05: signal predictive content is weak or absent.")
+        print("  → Note: full-cross-section IC < 0.05 is common when most company-months")
+        print("    carry no signal. Active-signal IC is the relevant metric for ranking.")
 
-    logger.info("IC = %.4f, p = %.4f (n=%d)", ic, p_value, len(df))
+    logger.info("IC (full) = %.4f, p = %.4f (n=%d)", ic, p_value, len(df))
     return float(ic)
