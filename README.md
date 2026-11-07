@@ -333,3 +333,8 @@ data and have not been validated on live trading infrastructure.
 ---
 
 *Built with the Wayback Machine CDX API, yfinance, BLS JOLTS, and a lot of BeautifulSoup.*
+
+## Known limitations
+
+- **The monthly long/short "backtest" is not a price-return backtest.** `run_long_short_backtest` uses the forward EPS `surprise_pct` as the return proxy, so `ls_return` and `cumulative_pnl` measure surprise spread, not tradeable P&L. Use `run_event_study` (price entry/exit) for return estimates.
+- **Rolling z-score window includes the current month**, which slightly shrinks extreme readings; it does not use future data (covered by a point-in-time test).
