@@ -1,0 +1,74 @@
+keyword,function_category,signal_direction
+software engineer,ENGINEERING,BULLISH
+senior software engineer,ENGINEERING,BULLISH
+staff software engineer,ENGINEERING,BULLISH
+principal engineer,ENGINEERING,BULLISH
+backend engineer,ENGINEERING,BULLISH
+frontend engineer,ENGINEERING,BULLISH
+full stack engineer,ENGINEERING,BULLISH
+machine learning engineer,ENGINEERING,BULLISH
+ml engineer,ENGINEERING,BULLISH
+data engineer,ENGINEERING,BULLISH
+infrastructure engineer,ENGINEERING,BULLISH
+platform engineer,ENGINEERING,BULLISH
+site reliability engineer,ENGINEERING,BULLISH
+devops engineer,ENGINEERING,BULLISH
+cloud engineer,ENGINEERING,BULLISH
+security engineer,ENGINEERING,BULLISH
+data scientist,ENGINEERING,BULLISH
+applied scientist,ENGINEERING,BULLISH
+research scientist,ENGINEERING,BULLISH
+research engineer,ENGINEERING,BULLISH
+solutions architect,ENGINEERING,BULLISH
+systems architect,ENGINEERING,BULLISH
+product manager,PRODUCT,BULLISH
+senior product manager,PRODUCT,BULLISH
+principal product manager,PRODUCT,BULLISH
+group product manager,PRODUCT,BULLISH
+director of product,PRODUCT,BULLISH
+product designer,PRODUCT,BULLISH
+ux designer,PRODUCT,BULLISH
+ui designer,PRODUCT,BULLISH
+ux researcher,PRODUCT,BULLISH
+product analyst,PRODUCT,BULLISH
+account executive,SALES,BULLISH
+sales representative,SALES,BULLISH
+enterprise account manager,SALES,BULLISH
+business development,SALES,BULLISH
+sales engineer,SALES,BULLISH
+customer success manager,SALES,BULLISH
+solutions consultant,SALES,BULLISH
+revenue operations,SALES,BULLISH
+partnership manager,SALES,BULLISH
+channel sales manager,SALES,BULLISH
+counsel,LEGAL,BEARISH
+general counsel,LEGAL,BEARISH
+associate general counsel,LEGAL,BEARISH
+corporate counsel,LEGAL,BEARISH
+compliance officer,LEGAL,BEARISH
+regulatory affairs,LEGAL,BEARISH
+privacy counsel,LEGAL,BEARISH
+litigation counsel,LEGAL,BEARISH
+legal operations,LEGAL,BEARISH
+hr business partner,HR,BEARISH
+human resources generalist,HR,BEARISH
+talent acquisition,HR,BEARISH
+recruiter,HR,BEARISH
+compensation analyst,HR,BEARISH
+benefits administrator,HR,BEARISH
+hr director,HR,BEARISH
+controller,GA,BEARISH
+accountant,GA,BEARISH
+financial analyst,GA,BEARISH
+finance manager,GA,BEARISH
+administrative assistant,GA,BEARISH
+executive assistant,GA,BEARISH
+office manager,GA,BEARISH
+facilities manager,GA,BEARISH
+operations manager,OPERATIONS,NEUTRAL
+supply chain analyst,OPERATIONS,NEUTRAL
+logistics coordinator,OPERATIONS,NEUTRAL
+program manager,OPERATIONS,NEUTRAL
+project manager,OPERATIONS,NEUTRAL
+business analyst,OPERATIONS,NEUTRAL
+strategy analyst,OPERATIONS,NEUTRAL
