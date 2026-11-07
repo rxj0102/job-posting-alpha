@@ -1,5 +1,7 @@
 # Job Posting Velocity as a Lead Indicator for Earnings Surprise Direction
 
+[![CI](https://github.com/rxj0102/job-posting-alpha/actions/workflows/ci.yml/badge.svg)](https://github.com/rxj0102/job-posting-alpha/actions/workflows/ci.yml)
+
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
@@ -254,19 +256,7 @@ jupyter notebook notebooks/01_exploratory_analysis.ipynb
 
 ## Key Findings
 
-> **Populate after running the full pipeline with live Wayback + yfinance data.**
-
-Placeholder template:
-
-| Metric | 1Q Lead | 2Q Lead |
-|--------|---------|---------|
-| t-statistic | TBD | TBD |
-| p-value | TBD | TBD |
-| Beat rate (signal) | TBD | TBD |
-| Beat rate (control) | TBD | TBD |
-| Spearman IC | TBD | TBD |
-| Annualised L-S Sharpe | TBD | TBD |
-| Max Drawdown | TBD | TBD |
+**Status:** no results are published yet. They depend on live data that was not available when this repository was last updated. Run the full pipeline with live Wayback and yfinance data to generate them. Results will be added here only from that run.
 
 ---
 
