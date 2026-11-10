@@ -260,6 +260,19 @@ jupyter notebook notebooks/01_exploratory_analysis.ipynb
 
 ---
 
+### Signal documentation
+
+| Field | Value |
+|---|---|
+| Signal | signal_strength = z x signal_ratio, long when z > 1.5 and signal_ratio > 0.65 |
+| Velocity z | 12-month z-score of net new postings divided by average headcount (`ZSCORE_ROLLING_WINDOW` = 12, min 6 periods) |
+| Quality ratio | Share of postings in engineering, product and sales (`data/reference/job_function_taxonomy.csv`) |
+| Expected sign | Positive: hiring acceleration in revenue-generating functions predicts earnings beats 1 to 2 quarters ahead and higher returns |
+| Timing | Monthly signal, `DEFAULT_HOLDING_DAYS` = 60 |
+| Inputs | Archived careers pages (Wayback Machine CDX), BLS JOLTS, prices and earnings (yfinance) |
+| Code | `src/wayback_scraper.py`, `src/features.py`, `src/signal.py`, `src/backtest.py` |
+| Status | Not run. The Wayback Machine is not reachable from the environment used for this review. Before a run, check that archived snapshots of each careers URL contain job listings in the HTML; many careers sites render listings with JavaScript, so a snapshot may hold only the page shell. `avg_headcount` in `data/reference/company_universe.csv` is not sourced |
+
 ## Limitations
 
 1. **Wayback Machine HTML rendering**: Modern careers pages rely on JavaScript;
