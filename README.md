@@ -12,9 +12,9 @@
 This repository implements a systematic alternative-data strategy that extracts
 forward-looking earnings signals from the *velocity* and *functional composition*
 of corporate job postings archived by the Wayback Machine.  The central observation
-is that a company's incremental hiring decisions — specifically, whether it is
+is that a company's incremental hiring decisions: specifically, whether it is
 accelerating headcount in revenue-generating functions (Engineering, Product, Sales)
-relative to its own history — precede positive earnings surprises by one to two
+relative to its own history: precede positive earnings surprises by one to two
 quarters.
 
 Building on the labour-economics literature (Lazear & Oyer 2004; Hershbein & Kahn
@@ -295,7 +295,7 @@ jupyter notebook notebooks/01_exploratory_analysis.ipynb
    (IBES, Refinitiv, Bloomberg).
 
 5. **Sample size constraints**: The 15-company, 18-month universe produces
-   O(200) signal events — the minimum for statistical inference.  Conclusions
+   O(200) signal events: the minimum for statistical inference.  Conclusions
    drawn from this pilot are directional only; scale to 500+ companies for
    robust out-of-sample validation.
 
@@ -334,24 +334,24 @@ Citation metadata is in `CITATION.cff`. GitHub turns it into a Cite this reposit
 
 ## Academic References
 
-- **Lazear, E.P. & Oyer, P. (2004)**. "Internal and External Labor Markets: A Personnel
-  Economics Approach." *Labour Economics*, 11(5), 527–554.
-  — Foundational paper on job postings as forward-looking firm signals.
+- **Lazear, E.P. & Oyer, P. (2004)**. *Internal and External Labor Markets: A Personnel
+  Economics Approach.* *Labour Economics*, 11(5), 527–554.
+: Foundational paper on job postings as forward-looking firm signals.
 
-- **Hershbein, B. & Kahn, L.B. (2018)**. "Do Recessions Accelerate Routine-Biased
-  Technological Change? Evidence from Vacancy Postings." *American Economic Review*,
+- **Hershbein, B. & Kahn, L.B. (2018)**. *Do Recessions Accelerate Routine-Biased
+  Technological Change? Evidence from Vacancy Postings.* *American Economic Review*,
   108(7), 1737–1772.
-  — Shows job posting composition predicts firm-level productivity trajectories.
+: Shows job posting composition predicts firm-level productivity trajectories.
 
-- **Banker, R.D., Huang, R., Natarajan, R. & Zhao, S. (2019)**. "Market Valuation of
-  Intangible Asset Disclosures and Future Earnings." *The Accounting Review*, 94(6).
+- **Banker, R.D., Huang, R., Natarajan, R. & Zhao, S. (2019)**. *Market Valuation of
+  Intangible Asset Disclosures and Future Earnings.* *The Accounting Review*, 94(6).
 
-- **Hou, K., Xue, C. & Zhang, L. (2020)**. "Replicating Anomalies." *Review of
+- **Hou, K., Xue, C. & Zhang, L. (2020)**. *Replicating Anomalies.* *Review of
   Financial Studies*, 33(5), 2019–2133.
-  — IC threshold benchmarks for alternative-data signals.
+: IC threshold benchmarks for alternative-data signals.
 
-- **Kogan, L., Papanikolaou, D., Seru, A. & Stoffman, N. (2017)**. "Technological
-  Innovation, Resource Allocation, and Growth." *Quarterly Journal of Economics*,
+- **Kogan, L., Papanikolaou, D., Seru, A. & Stoffman, N. (2017)**. *Technological
+  Innovation, Resource Allocation, and Growth.* *Quarterly Journal of Economics*,
   132(2), 665–712.
 
 ---
@@ -370,5 +370,5 @@ data and have not been validated on live trading infrastructure.
 
 ## Known limitations
 
-- **The monthly long/short "backtest" is not a price-return backtest.** `run_long_short_backtest` uses the forward EPS `surprise_pct` as the return proxy, so `ls_return` and `cumulative_pnl` measure surprise spread, not tradeable P&L. Use `run_event_study` (price entry/exit) for return estimates.
+- **The monthly long/short *backtest* is not a price-return backtest.** `run_long_short_backtest` uses the forward EPS `surprise_pct` as the return proxy, so `ls_return` and `cumulative_pnl` measure surprise spread, not tradeable P&L. Use `run_event_study` (price entry/exit) for return estimates.
 - **Rolling z-score window includes the current month**, which slightly shrinks extreme readings; it does not use future data (covered by a point-in-time test).
